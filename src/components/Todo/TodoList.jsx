@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const TodoList = () => {
     const [loading, setloading] = useState(false)
-    const [todoDatas, settodoDatas] = useState([{title:'second'}])
+
+    const {todos} = useSelector(state => state.todo)
+
   return (
     <div>
               <ul className='text-black'>
              {
-                todoDatas?.map((todo)=>(
+                todos?.map((todo)=>(
                     <ul key={todo._id} className='list-group list-group-horizontal rounded-0 bg-transparent'>
 
             <li
