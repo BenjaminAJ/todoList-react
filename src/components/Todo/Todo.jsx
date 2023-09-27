@@ -1,10 +1,19 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import TodoList from './TodoList'
+import { useDispatch } from 'react-redux'
+import { addtodo } from '../../redux/ReduxRequest/Todo'
 
 const Todo = () => {
   const [data, setdata] = useState()
   const [loading, setloading] = useState(false)
+
+  const dispatch = useDispatch();
+
+
+  const handleChangeaddTodo = ()=>{
+    dispatch(addtodo(data))
+  }
   return (
     <div>
       <section className="vh-100">
@@ -27,7 +36,7 @@ const Todo = () => {
                             placeholder="Add new..." />
                           <Link to="#!" data-mdb-toggle="tooltip" title="Set due date"><i className="bi bi-calendar ms-1 me-1"></i></Link>
                           <div>
-                            <button disabled={loading}  type="button" className="btn btn-primary">{loading ? 'Loading...' : 'Add'}</button>
+                            <button disabled={loading} onClick={handleChangeaddTodo}  type="button" className="btn btn-primary">{loading ? 'Loading...' : 'Add'}</button>
                           </div>
                         </div>
                       </div>
