@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const TodoList = () => {
-    
+    const [loading, setloading] = useState(false)
+    const [todoDatas, settodoDatas] = useState([{title:'second'}])
   return (
     <div>
               <ul className='text-black'>
