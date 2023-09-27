@@ -11,8 +11,8 @@ const TodoList = () => {
     <div>
               <ul className='text-black'>
              {
-                todos?.map((todo)=>(
-                    <ul key={todo._id} className='list-group list-group-horizontal rounded-0 bg-transparent'>
+                todos?.map((todo, i)=>(
+                    <ul key={i} className='list-group list-group-horizontal rounded-0 bg-transparent'>
 
             <li
                 className="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
@@ -22,7 +22,7 @@ const TodoList = () => {
                 </div>
               </li>
               
-          <Link to={todo._id}>
+          <Link to={i}>
           <li
                 className="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
                 <p className="lead fw-normal mb-0">{todo.title}</p>
