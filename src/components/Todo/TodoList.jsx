@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const TodoList = () => {
-    const [loading, setloading] = useState(false)
+    const [loading, setloading] = useState(false);
 
-    const {todos} = useSelector(state => state.todo)
+    const {todos} = useSelector(state => state.todo);
+
+
+
 
   return (
     <div>
@@ -18,7 +21,7 @@ const TodoList = () => {
                 className="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                 <div className="form-check">
                   <input className="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
-                    aria-label="..." checked={todo.checked} onChange={(event)=>handleChange(event,todo._id)} />
+                    aria-label="..." checked={todo.checked} onChange={(event)=>handleChange(event,i)} />
                 </div>
               </li>
               
@@ -32,7 +35,7 @@ const TodoList = () => {
                 <div className="d-flex flex-row justify-content-end mb-1">
                   <Link to="#!" className="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
                       className="bi bi-pencil-square me-3"></i></Link>
-                  <Link to="#!" className="text-danger" data-mdb-toggle="tooltip" onClick={(event)=>handleDelete(todo._id)} title="Delete todo"><i
+                  <Link to="#!" className="text-danger" data-mdb-toggle="tooltip" onClick={(event)=>handleDelete(i)} title="Delete todo"><i
                       className="bi bi-trash"></i></Link>
                 </div>
                 <div className="text-end text-muted">
