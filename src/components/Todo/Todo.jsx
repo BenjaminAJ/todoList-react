@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import TodoList from './TodoList'
 
 const Todo = () => {
   const [data, setdata] = useState()
@@ -34,7 +35,7 @@ const Todo = () => {
                   </div>
 
                   <hr className="my-4" />
-
+                  <TodoList/>
 
                 </div>
               </div>
