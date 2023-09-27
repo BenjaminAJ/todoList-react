@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    todos: []
+    todos: [{title:'lets go'}]
 }
 
 export const TodoSlice = createSlice({
@@ -9,7 +9,7 @@ export const TodoSlice = createSlice({
     initialState,
     reducers:{
         addtodo: (state, action)=>{
-            state.todos.push(action.payload);
+            state.todos.push({title:action.payload});
         }
     }
 })
