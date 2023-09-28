@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
-import {  useSelector } from 'react-redux'
+import {  useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { deleteTodo, updateChecked } from '../../redux/ReduxRequest/Todo';
 
 const TodoList = () => {
     const [loading, setloading] = useState(false);
 
     const {todos} = useSelector(state => state.todo);
+    const dispatch = useDispatch()
 
+    const handleChange = (event, title)=>{
+        dispatch(updateChecked(title));
+    }
 
-
+    const handleDelete = (title)=>{
+        dispatch(deleteTodo(title))
+    }
 
   return (
     <div>
@@ -21,7 +28,7 @@ const TodoList = () => {
                 className="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                 <div className="form-check">
                   <input className="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
-                    aria-label="..." checked={todo.checked} onChange={(event)=>handleChange(event,i)} />
+                    aria-label="..." checked={todo.checked} onChange={(event)=>handleChange(event,todo.title)} />
                 </div>
               </li>
               
@@ -35,7 +42,7 @@ const TodoList = () => {
                 <div className="d-flex flex-row justify-content-end mb-1">
                   <Link to="#!" className="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
                       className="bi bi-pencil-square me-3"></i></Link>
-                  <Link to="#!" className="text-danger" data-mdb-toggle="tooltip" onClick={(event)=>handleDelete(i)} title="Delete todo"><i
+                  <Link to="#!" className="text-danger" data-mdb-toggle="tooltip" onClick={(event)=>handleDelete(todo.title)} title="Delete todo"><i
                       className="bi bi-trash"></i></Link>
                 </div>
                 <div className="text-end text-muted">
@@ -45,7 +52,7 @@ const TodoList = () => {
                 </div>
               </li>
                     </ul>
-                ))
+                )) 
                 
              }
              {loading ? 'loading' : ''}

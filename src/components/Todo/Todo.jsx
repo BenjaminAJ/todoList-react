@@ -12,7 +12,11 @@ const Todo = () => {
 
 
   const handleChangeaddTodo = ()=>{
+    setloading(true)
     dispatch(addtodo(data))
+    setTimeout(() => {
+      setloading(false)
+    }, 500);
   }
   return (
     <div>

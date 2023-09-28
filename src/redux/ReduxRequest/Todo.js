@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    todos: [{title:'lets go'}]
+    todos: []
 }
 
 export const TodoSlice = createSlice({
@@ -9,11 +9,21 @@ export const TodoSlice = createSlice({
     initialState,
     reducers:{
         addtodo: (state, action)=>{
-            state.todos.push({title:action.payload});
+            state.todos.push({title:action.payload, checked:false});
+        },
+        updateChecked:(state,action) =>{
+            state.todos.forEach((todo)=>{
+                if (todo.title === action.payload) {
+                    todo.checked = !todo.checked                
+                }
+            })
+        },
+        deleteTodo:(state, action)=>{
+            state.todos = state.todos.filter((todo)=> {return todo.title != action.payload})
         }
     }
 })
 
-export const {addtodo} = TodoSlice.actions;
+export const {addtodo, updateChecked, deleteTodo} = TodoSlice.actions;
 
 export default TodoSlice.reducer;
