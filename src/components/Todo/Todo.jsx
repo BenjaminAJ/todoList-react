@@ -3,21 +3,32 @@ import { Link } from 'react-router-dom'
 import TodoList from './TodoList'
 import { useDispatch } from 'react-redux'
 import { addtodo } from '../../redux/ReduxRequest/Todo'
+import { useFormik } from 'formik'
 
 const Todo = () => {
-  const [data, setdata] = useState()
   const [loading, setloading] = useState(false)
 
   const dispatch = useDispatch();
 
+  const onSubmit = ()=>{
+    handleChangeaddTodo()
+  }
+  const {values, handleChange, handleBlur} = useFormik({
+    initialValues:{
+      title: ''
+    }, 
+    onSubmit
+  })
+
 
   const handleChangeaddTodo = ()=>{
     setloading(true)
-    dispatch(addtodo(data))
+    dispatch(addtodo(values.title))
     setTimeout(() => {
       setloading(false)
     }, 500);
   }
+  console.log(values.title);
   return (
     <div>
       <section className="vh-100">
@@ -36,8 +47,10 @@ const Todo = () => {
                     <div className="card">
                       <div className="card-body">
                         <div className="d-flex flex-row align-items-center">
-                          <input onChange={(e) => setdata(e.target.value)} type="text" className="form-control form-control-lg" id="exampleFormControlInput1"
+                          <form action="">
+                          <input onChange={handleChange} value={values.title} onBlur={handleBlur} name='title' type="text" className="form-control form-control-lg" id="exampleFormControlInput1"
                             placeholder="Add new..." />
+                          </form>
                           <Link to="#!" data-mdb-toggle="tooltip" title="Set due date"><i className="bi bi-calendar ms-1 me-1"></i></Link>
                           <div>
                             <button disabled={loading} onClick={handleChangeaddTodo}  type="button" className="btn btn-primary">{loading ? 'Loading...' : 'Add'}</button>

@@ -17,6 +17,9 @@ const TodoList = () => {
         dispatch(deleteTodo(title))
     }
 
+    const handleEdit = (title,i)=>{ //Todo: edit todo
+    }
+
   return (
     <div>
               <ul className='text-black'>
@@ -40,7 +43,7 @@ const TodoList = () => {
           </Link>
               <li className="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
                 <div className="d-flex flex-row justify-content-end mb-1">
-                  <Link to="#!" className="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
+                  <Link to="#!" className="text-info" onClick={(e) =>{handleEdit(todo.title,i)}} data-mdb-toggle="tooltip" title="Edit todo"><i
                       className="bi bi-pencil-square me-3"></i></Link>
                   <Link to="#!" className="text-danger" data-mdb-toggle="tooltip" onClick={(event)=>handleDelete(todo.title)} title="Delete todo"><i
                       className="bi bi-trash"></i></Link>
