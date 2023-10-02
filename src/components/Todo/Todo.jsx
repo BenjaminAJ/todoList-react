@@ -46,7 +46,7 @@ const Todo = () => {
                   <div className="pb-2">
                     <div className="card">
                       <div className="card-body">
-                        <form onSubmit={handleSubmit} className="d-flex flex-row align-items-center">
+                        <form onSubmit={handleSubmit} className="d-flex flex-column flex-md-row  align-items-center">
                           <input onChange={handleChange} value={values.title} onBlur={handleBlur} name='title' type="text" className="form-control form-control-lg" id="exampleFormControlInput1"
                             placeholder="Add new..." />
                             <p className='text-danger'>{errors.title && touched.title ? '*Required' : ''}</p>
