@@ -40,7 +40,7 @@ const Todo = () => {
 
                   <p className="h1 text-center mt-3 mb-4 pb-3 text-primary">
                     <i className="bi bi-check-square me-1"></i>
-                    <u>My Todo-s</u>
+                    <u>BenTaskify</u>
                   </p>
 
                   <div className="pb-2">
