@@ -14,7 +14,7 @@ const Todo = () => {
   const onSubmit = ()=>{
     handleChangeaddTodo()
   }
-  const {values, handleChange, handleBlur,errors, touched} = useFormik({
+  const {values, handleChange, handleBlur,errors, touched, handleSubmit} = useFormik({
     initialValues:{
       title: ''
     }, 
@@ -46,15 +46,15 @@ const Todo = () => {
                   <div className="pb-2">
                     <div className="card">
                       <div className="card-body">
-                        <div className="d-flex flex-row align-items-center">
+                        <form onSubmit={handleSubmit} className="d-flex flex-row align-items-center">
                           <input onChange={handleChange} value={values.title} onBlur={handleBlur} name='title' type="text" className="form-control form-control-lg" id="exampleFormControlInput1"
                             placeholder="Add new..." />
                             <p className='text-danger'>{errors.title && touched.title ? '*Required' : ''}</p>
                           <Link to="#!" data-mdb-toggle="tooltip" title="Set due date"><i className="bi bi-calendar ms-1 me-1"></i></Link>
                           <div>
-                            <button disabled={loading} onClick={handleChangeaddTodo}  type="button" className="btn btn-primary">{loading ? 'Loading...' : 'Add'}</button>
+                            <button disabled={loading}   type="submit" className="btn btn-primary">{loading ? 'Loading...' : 'Add'}</button>
                           </div>
-                        </div>
+                        </form>
                       </div>
                     </div>
                   </div>
