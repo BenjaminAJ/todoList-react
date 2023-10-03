@@ -12,8 +12,8 @@ export const TodoSlice = createSlice({
             state.todos.push({title:action.payload, checked:false});
         },
         updateChecked:(state,action) =>{
-            state.todos.forEach((todo)=>{
-                if (todo.title === action.payload) {
+            state.todos.forEach((todo, i)=>{
+                if (i === action.payload) {
                     todo.checked = !todo.checked                
                 }
             })
