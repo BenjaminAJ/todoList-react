@@ -11,8 +11,10 @@ const Todo = () => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = ()=>{
-    handleChangeaddTodo()
+  const onSubmit = (vales, formikBag)=>{
+    handleChangeaddTodo();
+
+    formikBag.resetForm({values: {title: ''}})
   }
   const {values, handleChange, handleBlur,errors, touched, handleSubmit} = useFormik({
     initialValues:{
