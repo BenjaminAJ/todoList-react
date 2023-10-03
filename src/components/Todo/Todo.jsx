@@ -11,7 +11,7 @@ const Todo = () => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = (vales, formikBag)=>{
+  const onSubmit = (values, formikBag)=>{
     handleChangeaddTodo();
 
     formikBag.resetForm({values: {title: ''}})
