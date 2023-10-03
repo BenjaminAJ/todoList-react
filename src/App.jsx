@@ -5,10 +5,14 @@ import './App.css'
 import Todo from './components/Todo/Todo'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import ErrorPage from './components/ErrorPage'
+import SingleTodo from './components/Todo/SingleTodo'
 
 function App() {
   const router = createBrowserRouter([
-    {path:'', element:<Todo/>, errorElement:<ErrorPage/>}
+    {path:'', errorElement:<ErrorPage/>, children:[
+      {index:true, element:<Todo/>},
+      {path:':id', element:<SingleTodo/>}
+    ]}
   ])
   return (
     <>
