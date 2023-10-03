@@ -9,8 +9,8 @@ const TodoList = () => {
     const {todos} = useSelector(state => state.todo);
     const dispatch = useDispatch()
 
-    const handleChange = (event, title)=>{
-        dispatch(updateChecked(title));
+    const handleChange = (event, i)=>{
+        dispatch(updateChecked(i));
     }
 
     const handleDelete = (title)=>{
@@ -31,7 +31,7 @@ const TodoList = () => {
                 className="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
                 <div className="form-check">
                   <input className="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
-                    aria-label="..." checked={todo.checked} onChange={(event)=>handleChange(event,todo.title)} />
+                    aria-label="..." checked={todo.checked} onChange={(event)=>handleChange(event,i)} />
                 </div>
               </li>
               
