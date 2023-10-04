@@ -7,7 +7,7 @@ const SingleTodo = () => {
 
   const { todos } = useSelector((state) => state.todo);
   const singleTodo = todos.filter((todo, i) => {
-    return i == id;
+    return todo.title === id;
   });
   if (singleTodo.length === 0) {
     // Todo not found
