@@ -48,6 +48,7 @@ const Todo = () => {
       setTimeout(() => {
         setloading(false);
         setediting(false);
+        values.title = ''
       }, 1000);
   };
     return (
