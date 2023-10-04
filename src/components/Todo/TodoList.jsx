@@ -3,7 +3,7 @@ import {  useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteTodo, updateChecked } from '../../redux/ReduxRequest/Todo';
 
-const TodoList = () => {
+const TodoList = ({editing, setediting, values}) => {
     const [loading, setloading] = useState(false);
 
     const {todos} = useSelector(state => state.todo);
@@ -18,6 +18,9 @@ const TodoList = () => {
     }
 
     const handleEdit = (title,i)=>{ //Todo: edit todo
+      setediting(true)
+      values.title = title
+      values.index = i
     }
 
   return (
@@ -35,7 +38,7 @@ const TodoList = () => {
                 </div>
               </li>
               
-          <Link to={'/'+i}>
+          <Link to={'/'+todo.title}>
           <li
                 className="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
                 <p className="lead fw-normal mb-0">{todo.title}</p>
